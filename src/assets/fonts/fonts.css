@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Display-Regular';
+    src: url('./YS-Display-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Display-Medium';
+    src: url('./YS-Display-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Text-Regular';
+    src: url('./YS-Text-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Text-Medium';
+    src: url('./YS-Text-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
