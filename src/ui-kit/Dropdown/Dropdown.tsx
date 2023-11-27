@@ -1,29 +1,40 @@
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select, { SelectProps } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { useState } from 'react';
-
-
+import { ListItemIcon, ListItemText } from '@mui/material';
+import CheckIcon from '@mui/icons-material/Check';
 type TValues = {
     id: number;
     lable: string;
 };
 type TDropdonwProps = {
-    values: TValues[];
+    options: TValues[];
+    selectedValues: string[]
 };
 
-const Dropdown = ({ values }: TDropdonwProps) => {
-    const [value, setValue] = useState('');
-    const handleChange = (event: SelectChangeEvent) => {
-        setValue(event.target.value);
-    };
+const Dropdown = ({ options, selectedValues, ...rest}: TDropdonwProps & SelectProps) => {
 
     return (
-        <Select size="small" sx={{ minWidth: '320px'}} inputProps={{ 'aria-label': 'Without label' }} value={value} onChange={handleChange}>
-            {values.map(({ id, lable }) => (
-                <MenuItem key={id} value={id}>
-                    {lable}
-                </MenuItem>
-            ))}
+        <Select
+        size="small"
+        sx={{ minWidth: '320px' }}
+        inputProps={{ 'aria-label': 'Without label' }}
+        value={selectedValues}
+        multiple
+        {...rest}
+        >
+            {options.map(({ id, lable }) => {
+                const selected = selectedValues.includes(id.toString())
+                return (
+                    <MenuItem key={id} value={id}>
+                        <ListItemText primary={lable} />
+                        {selected && (
+                            <ListItemIcon>
+                                <CheckIcon />
+                            </ListItemIcon>
+                        )}
+                    </MenuItem>
+                );
+            })}
         </Select>
     );
 };
