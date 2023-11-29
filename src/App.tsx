@@ -1,5 +1,8 @@
+import Calendar from "./ui-kit/Calendar/Calendar";
+
 function App() {
-    return <></>;
+    return <>
+    <Calendar/></>;
 }
 
 export default App;
