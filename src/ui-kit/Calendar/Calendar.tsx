@@ -1,11 +1,10 @@
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { ruRU } from '@mui/x-date-pickers/locales/';
-// import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
-// import { Dayjs } from 'dayjs';
+import { Dayjs } from 'dayjs';
 import 'dayjs/locale/ru';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { useState } from 'react';
-
+import { useState } from 'react';
+import CalendarIcon from '../../assets/icons/calendar.svg?react';
 const calendarHeaderPropsStyles = {
     sx: {
         '.MuiPickersCalendarHeader-root': {
@@ -37,19 +36,27 @@ const calendarHeaderPropsStyles = {
 };
 
 function Calendar() {
-    // const [value, setValue] = useState<Dayjs | null>(null);
+    const [open, setOpen] = useState(false);
+
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ru" localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}>
-            <DatePicker slotProps={{
-                calendarHeader: calendarHeaderPropsStyles,
-                actionBar: { actions: ['cancel', 'accept'] } ,
-                calendarIcon: () => <span>d</span>
-                }} />
-            {/* <DateCalendar
-        slotProps={{ calendarHeader: calendarHeaderPropsStyles }}
-        value={value}
-        onChange={(newVal) => setValue(newVal)}
-      /> */}
+            <DatePicker
+                open={open}
+                onClose={() => setOpen(false)}
+                closeOnSelect={false}
+                slots={{ openPickerButton: () => null }}
+                slotProps={{
+                    calendarHeader: calendarHeaderPropsStyles,
+                    actionBar: { actions: ['cancel', 'accept'] },
+                    textField: {
+                        placeholder: 'Выберите дату',
+                        InputProps: {
+                            startAdornment: <CalendarIcon />,
+                        },
+                        onClick: () => setOpen(true),
+                    },
+                }}
+            />
         </LocalizationProvider>
     );
 }
