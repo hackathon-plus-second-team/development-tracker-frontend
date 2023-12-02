@@ -5,6 +5,7 @@ import 'dayjs/locale/ru';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useState } from 'react';
 import CalendarIcon from '../../assets/icons/calendar.svg?react';
+
 const calendarHeaderPropsStyles = {
     sx: {
         '.MuiPickersCalendarHeader-root': {
@@ -35,21 +36,36 @@ const calendarHeaderPropsStyles = {
     },
 };
 
+const datePickerInputPropsStyle = {
+    '.MuiInputBase-input': {
+        marginLeft: '20px',
+        fontSize: '14px',
+        maxWidth: '140px',
+        height: '40px',
+        padding: 0,
+    },
+};
+
 function Calendar() {
     const [open, setOpen] = useState(false);
-
+    const [onError, setOnError] = useState(false);
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ru" localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}>
             <DatePicker
                 open={open}
                 onClose={() => setOpen(false)}
+                onError={() => setOnError(true)}
                 closeOnSelect={false}
                 slots={{ openPickerButton: () => null }}
                 slotProps={{
                     calendarHeader: calendarHeaderPropsStyles,
                     actionBar: { actions: ['cancel', 'accept'] },
                     textField: {
+                        sx: datePickerInputPropsStyle,
+                        size: 'small',
                         placeholder: 'Выберите дату',
+                        error: onError,
+                        helperText: onError && 'Дата не выбрана',
                         InputProps: {
                             startAdornment: <CalendarIcon />,
                         },
