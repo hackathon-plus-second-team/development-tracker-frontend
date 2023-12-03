@@ -1,0 +1,14 @@
+@use "../../assets/styles/consts.scss" as *;
+
+.progress {
+    @include h3-bold;
+}
+
+.label {
+    font-family: 'Text-Regular', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 12px;
+    color: #797981;
+}
