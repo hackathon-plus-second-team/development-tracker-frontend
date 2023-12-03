@@ -1,0 +1,22 @@
+@import '../../assets/styles/consts.scss';
+
+.name {
+    @include text-regular;
+    color: #1a1b22;
+    margin: 0 12px 0 0;
+    font-size: 13px;
+    line-height: 16px;
+    width: 78px;
+}
+
+.percent {
+    @include text-regular;
+    color: #1a1b22;
+    opacity: 0.6;
+    margin: 0;
+    font-size: 11px;
+    line-height: 12px;
+    margin: 0 0 0 12px;
+    width: 26px;
+    text-align: end;
+}
