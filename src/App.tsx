@@ -1,4 +1,4 @@
-import BasicTabs from './ui-kit/Button/Tab/Tab';
+import BasicTabs from './ui-kit/Tab/Tab';
 
 function App() {
     return (
