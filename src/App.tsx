@@ -1,5 +1,11 @@
+import BasicTabs from './ui-kit/Button/Tab/Tab';
+
 function App() {
-    return <></>;
+    return (
+        <>
+            <BasicTabs></BasicTabs>
+        </>
+    );
 }
 
 export default App;
