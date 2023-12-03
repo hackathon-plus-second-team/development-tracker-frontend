@@ -6,9 +6,12 @@ function App() {
         <>
             <BasicTabs></BasicTabs>
 
-            <ProgressBar skillName="html" value={0} isCheckbox={false}></ProgressBar>
-            <ProgressBar skillName="html" value={50} isCheckbox={false}></ProgressBar>
-            <ProgressBar skillName="html" value={100} isCheckbox={false}></ProgressBar>
+            <ProgressBar skillName="html" value={0} isCheckbox={false} isBig={true}></ProgressBar>
+            <ProgressBar skillName="html" value={50} isCheckbox={false} isBig={true}></ProgressBar>
+            <ProgressBar skillName="html" value={100} isCheckbox={false} isBig={true}></ProgressBar>
+            <ProgressBar skillName="html" value={0} isCheckbox={false} isBig={false}></ProgressBar>
+            <ProgressBar skillName="html" value={50} isCheckbox={false} isBig={false}></ProgressBar>
+            <ProgressBar skillName="html" value={100} isCheckbox={false} isBig={false}></ProgressBar>
         </>
     );
 }
