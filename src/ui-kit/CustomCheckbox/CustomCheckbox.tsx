@@ -1,6 +1,7 @@
 import { FormControlLabel } from '@mui/material';
 import Checkbox, { CheckboxProps } from '@mui/material/Checkbox';
 import styles from './CustomCheckbox.module.scss';
+
 type TCustomCheckbox = {
     label: string;
 };
@@ -8,12 +9,33 @@ type TCustomCheckbox = {
 const CustomCheckbox = ({ label, ...rest }: TCustomCheckbox & CheckboxProps) => {
     return (
         <FormControlLabel
+            sx={{
+                '&:hover .MuiSvgIcon-root': {
+                    backgroundColor: 'transparent',
+                    outline: '1px solid #1D6BF3',
+                    border: 'none',
+                },
+
+                '.Mui-disabled .MuiSvgIcon-root': {
+                    outline: '1px solid #DDE0E4',
+                },
+            }}
             control={
                 <Checkbox
                     sx={{
-                        color: '#797981',
-                        '&.checkboxClasses.checked': { color: '#1D6BF3' },
-                        '&:hover': { backgroundColor: 'transparent' },
+                        '& .MuiSvgIcon-root': {
+                            color: 'transparent',
+                            outline: '1px solid #797981',
+                            borderRadius: '4px',
+                            width: '24px',
+                            height: '24px',
+                        },
+
+                        '&.Mui-checked .MuiSvgIcon-root': {
+                            backgroundColor: '#1D6BF3',
+                            color: 'white',
+                            outline: '1px solid #1D6BF3',
+                        },
                     }}
                     {...rest}
                 />
