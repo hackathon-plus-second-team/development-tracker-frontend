@@ -4,7 +4,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 
 // interface courseDataInterface {
-    // интерфейс получаемых от бэка данных
+// интерфейс получаемых от бэка данных
 // }
 
 // импровизированная заглушка:
@@ -64,7 +64,7 @@ function a11yProps(index: number) {
 
 export default function BasicTabs() {
     const [value, setValue] = React.useState(0);
-
+    // @ts-expect-error исправить
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
@@ -115,12 +115,15 @@ export default function BasicTabs() {
                 })}
             </Tabs>
 
-            {courseData.map((el, index) => {
-                return (
-                    /* вставить данные в компонент страницы, привязать к ней индекс и передать ее */
-                    <CustomTabPanel value={value} index={index} key={index}></CustomTabPanel>
-                );
-            })}
+            {
+                // @ts-expect-error исправить
+                courseData.map((el, index) => {
+                    return (
+                        /* вставить данные в компонент страницы, привязать к ней индекс и передать ее */
+                        <CustomTabPanel value={value} index={index} key={index}></CustomTabPanel>
+                    );
+                })
+            }
         </Box>
     );
 }

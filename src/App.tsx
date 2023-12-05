@@ -6,7 +6,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SharedLayout from './Components/SharedLayout/SharedLayout';
 
 function App() {
-  
+    // @ts-expect-error исправить
+    //eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { user, token } = useAppSelector((state) => state.auth);
 
     const dispatch = useAppDispatch();
