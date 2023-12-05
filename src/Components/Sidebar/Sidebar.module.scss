@@ -1,0 +1,119 @@
+@import '../../assets/styles/consts.scss';
+
+.sidebar {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 168px;
+    min-height: 100vh;
+    padding: 40px 8px;
+    background-color: $black900;
+
+    .profile {
+        box-sizing: border-box;
+        padding: 12px 8px;
+        display: flex;
+        justify-content: space-between;
+        width: 151px;
+        height: 88px;
+        border-radius: 4px;
+        background-color: $white;
+
+        .userInfo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 4px;
+            font-family: 'Text-Regular', sans-serif;
+            font-size: 11px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 12px;
+            color: $black900;
+
+            .userName {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            }
+
+            .userStatus {
+                display: flex;
+                flex-direction: column;
+
+                & > span:last-of-type {
+                    color: $blueMain;
+                    font-family: 'Text-Medium', sans-serif;
+                    font-weight: 500;
+                }
+            }
+        }
+        .profileArrow {
+            cursor: pointer;
+            font-size: 18px;
+            align-self: flex-end;
+        }
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .linksContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        &:nth-of-type(1):not(:only-child):after {
+            content: '';
+            width: 100%;
+            height: 1px;
+            background-color: $black300;
+        }
+        &:nth-of-type(2)::after {
+            content: '';
+            width: 100%;
+            height: 1px;
+            background-color: $black300;
+        }
+
+        .link {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            font-family: 'Text-Regular', sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px;
+            color: $black300;
+            text-decoration: none;
+            &:hover {
+                cursor: pointer;
+                color: $black100;
+            }
+        }
+    }
+
+    .button {
+        display: flex;
+        gap: 4px;
+        justify-content: center;
+        align-items: center;
+        width: 151px;
+        height: 44px;
+        margin: 103px 0 20px;
+        border: 0;
+        border-radius: 6px;
+        background-color: $white;
+        font-family: 'Text-Regular', sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        color: $blueMain;
+    }
+}
