@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SharedLayout from './Components/SharedLayout/SharedLayout';
 
 function App() {
-  
+
     const { user, token } = useAppSelector((state) => state.auth);
 
     const dispatch = useAppDispatch();
