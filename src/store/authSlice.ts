@@ -7,7 +7,6 @@ type TUser = {
 };
 
 type TInitialState = {
-    user: TUser | null;
     token: string | null;
     isLoading: boolean;
     isError: boolean;
@@ -16,7 +15,6 @@ type TInitialState = {
 };
 
 const initialState: TInitialState = {
-    user: null,
     token: null,
     isLoading: false,
     isError: false,
@@ -31,6 +29,7 @@ export const login = createAsyncThunk('auth/login', async ({ email, password }: 
             password,
         });
         response.data && localStorage.setItem('token', JSON.stringify(response.data.access));
+        return response.data.access;
     } catch (error) {
         const err = error as AxiosError;
         return thunkAPI.rejectWithValue(err.response?.data);
@@ -49,13 +48,13 @@ const authSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isSuccess = true;
-                state.user = action.payload;
+                state.token = action.payload;
             })
             .addCase(login.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.message = action.payload;
-                state.user = null;
+                state.token = null;
             });
     },
 });
