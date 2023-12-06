@@ -1,0 +1,6 @@
+services:
+  frontend:
+    build: .
+    container_name: development_tracker_frontend
+    ports:
+      - "5173:5173"
