@@ -30,7 +30,7 @@ export const login = createAsyncThunk('auth/login', async ({ email, password }: 
             email,
             password,
         });
-        return response.data;
+        response.data && localStorage.setItem('token', JSON.stringify(response.data.access));
     } catch (error) {
         const err = error as AxiosError;
         return thunkAPI.rejectWithValue(err.response?.data);
