@@ -26,10 +26,8 @@
             align-items: flex-start;
             justify-content: space-between;
             gap: 4px;
-            font-family: 'Text-Regular', sans-serif;
+            @include text-regular;
             font-size: 11px;
-            font-style: normal;
-            font-weight: 400;
             line-height: 12px;
             color: $black900;
 
@@ -45,8 +43,9 @@
 
                 & > span:last-of-type {
                     color: $blueMain;
-                    font-family: 'Text-Medium', sans-serif;
-                    font-weight: 500;
+                    @include text-bold;
+                    font-size: 11px;
+                    line-height: 12px;
                 }
             }
         }
@@ -84,10 +83,8 @@
             display: flex;
             gap: 4px;
             align-items: center;
-            font-family: 'Text-Regular', sans-serif;
+            @include text-regular;
             font-size: 14px;
-            font-style: normal;
-            font-weight: 400;
             line-height: 20px;
             color: $black300;
             text-decoration: none;
@@ -109,10 +106,8 @@
         border: 0;
         border-radius: 6px;
         background-color: $white;
-        font-family: 'Text-Regular', sans-serif;
+        @include text-bold;
         font-size: 14px;
-        font-style: normal;
-        font-weight: 500;
         line-height: 20px;
         color: $blueMain;
     }
