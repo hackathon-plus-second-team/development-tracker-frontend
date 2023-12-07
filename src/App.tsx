@@ -4,16 +4,18 @@ import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import { login } from './store/authSlice';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SharedLayout from './Components/SharedLayout/SharedLayout';
+import { getCourses } from './store/coursesSlice';
 
 function App() {
 
-    const { user, token } = useAppSelector((state) => state.auth);
+    const { token } = useAppSelector((state) => state.auth);
 
     const dispatch = useAppDispatch();
     useEffect(() => {
-        if (user) return;
+        if (token) return;
         dispatch(login({ email: 'TestUser@yandex.ru', password: 'ZQj-hBQ-c83-fmu' }));
-    }, [user, dispatch]);
+        dispatch(getCourses())
+    }, [token, dispatch]);
 
     return (
         <BrowserRouter>
