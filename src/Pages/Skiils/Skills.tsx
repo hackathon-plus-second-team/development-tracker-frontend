@@ -15,6 +15,7 @@ const Skills = () => {
 
     return (
         <section className={styles.skills}>
+            <h2 className={styles.heading}>Развите навыков</h2>
             <BasicTabs courseData={courses}></BasicTabs>
         </section>
     );

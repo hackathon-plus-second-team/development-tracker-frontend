@@ -5,13 +5,21 @@
     padding: 20px;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 16px;
     border-radius: 8px;
     border: 1px solid $black100;
     background: $white;
     box-shadow: 8px 8px 8px 0px rgba(221, 224, 228, 0.25);
     &:hover {
-        border:1px solid $black300;
+        border: 1px solid $black300;
+    }
+    .heading {
+        @include subtitle-bold;
+    }
+    .text {
+        @include text-regular;
+        font-size: 14px;
+        max-width: 240px;
     }
 }

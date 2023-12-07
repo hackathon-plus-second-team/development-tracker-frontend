@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import ProgressbarList from '../../Components/ProgressbarList/ProgressbarList';
 import RoundProgressbar from '../RoundProgressbar/RoundProgressbar';
+import Card from '../Card/Card';
 
 type TSkill = {
     id: number;
@@ -33,7 +34,7 @@ function CustomTabPanel(props: TabPanelProps) {
 
     return (
         <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
-            {value === index && <Box sx={{display:'flex', justifyContent:"space-between", width:"100%"}}>{children}</Box>}
+            {value === index && <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>{children}</Box>}
         </div>
     );
 }
@@ -57,6 +58,8 @@ export default function BasicTabs({ courseData }: TBasicTabsProps) {
             <Tabs
                 sx={{
                     minHeight: 'fit-content',
+                    marginBottom: '24px',
+                    '.MuiTabs-flexContainer': { gap: '32px' },
                 }}
                 value={value}
                 onChange={handleChange}
@@ -104,9 +107,9 @@ export default function BasicTabs({ courseData }: TBasicTabsProps) {
                     return (
                         /* вставить данные в компонент страницы, привязать к ней индекс и передать ее */
                         <CustomTabPanel value={value} index={index} key={index}>
-                              <ProgressbarList skills={el.skills} />
+                            <ProgressbarList skills={el.skills} label="Junior" />
                             <RoundProgressbar label="Навыки подтверждены на" value={20} />
-
+                            <Card deadline={'11.11.11'} goal={false} label="Стать мидлои" progressValue={22} />
                         </CustomTabPanel>
                     );
                 })}
