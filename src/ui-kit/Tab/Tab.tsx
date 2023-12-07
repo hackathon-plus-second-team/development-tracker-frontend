@@ -3,41 +3,22 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 
-// interface courseDataInterface {
-    // интерфейс получаемых от бэка данных
-// }
+type TSkill = {
+    id: number;
+    name: string;
+    level: number;
+};
 
-// импровизированная заглушка:
+type TCourse = {
+    id: number;
+    name: string;
+    description: string;
+    skills: TSkill[];
+};
 
-const courseData = [
-    {
-        name: 'Фронтенд-разработчик',
-        label: 'frontend',
-        index: 1,
-        skills: [
-            { name: 'HTML', index: 1 },
-            { name: 'JavaScript', index: 2 },
-        ],
-    },
-    {
-        name: 'Python-разработчик',
-        label: 'python',
-        index: 2,
-        skills: [
-            { name: 'python', index: 1 },
-            { name: 'database', index: 2 },
-        ],
-    },
-    {
-        name: 'Python-разработчик',
-        label: 'python',
-        index: 2,
-        skills: [
-            { name: 'python', index: 1 },
-            { name: 'database', index: 2 },
-        ],
-    },
-];
+type TBasicTabsProps = {
+    courseData: TCourse[] | null;
+};
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -62,7 +43,7 @@ function a11yProps(index: number) {
     };
 }
 
-export default function BasicTabs() {
+export default function BasicTabs({ courseData }: TBasicTabsProps) {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -87,40 +68,44 @@ export default function BasicTabs() {
                     },
                 }}
             >
-                {courseData.map((el, index) => {
-                    return (
-                        <Tab
-                            label={el.label}
-                            key={index}
-                            {...a11yProps(index)}
-                            sx={{
-                                color: '#1A1B22',
-                                textAlign: 'center',
-                                fontFamily: 'Display-Regular',
-                                fontSize: '16px',
-                                fontWeight: 400,
-                                lineHeight: '20px',
-                                padding: 0,
-                                marginBottom: '8px',
-                                minHeight: 'fit-content',
-                                '&:hover': {
-                                    color: '#1D6BF3',
-                                },
-                                '&.Mui-selected': {
-                                    color: '#1D6BF3',
-                                },
-                            }}
-                        />
-                    );
-                })}
+                {courseData &&
+                    courseData.map((el, index) => {
+                        return (
+                            <Tab
+                                label={el.name}
+                                key={index}
+                                {...a11yProps(index)}
+                                sx={{
+                                    color: '#1A1B22',
+                                    textAlign: 'center',
+                                    fontFamily: 'Display-Regular',
+                                    fontSize: '16px',
+                                    fontWeight: 400,
+                                    lineHeight: '20px',
+                                    padding: 0,
+                                    marginBottom: '8px',
+                                    minHeight: 'fit-content',
+                                    '&:hover': {
+                                        color: '#1D6BF3',
+                                    },
+                                    '&.Mui-selected': {
+                                        color: '#1D6BF3',
+                                    },
+                                }}
+                            />
+                        );
+                    })}
             </Tabs>
 
-            {courseData.map((el, index) => {
-                return (
-                    /* вставить данные в компонент страницы, привязать к ней индекс и передать ее */
-                    <CustomTabPanel value={value} index={index} key={index}></CustomTabPanel>
-                );
-            })}
+            {courseData &&
+                courseData.map((el, index) => {
+                    return (
+                        /* вставить данные в компонент страницы, привязать к ней индекс и передать ее */
+                        <CustomTabPanel value={value} index={index} key={index}>
+                            
+                        </CustomTabPanel>
+                    );
+                })}
         </Box>
     );
 }
