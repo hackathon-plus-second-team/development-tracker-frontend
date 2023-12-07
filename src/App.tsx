@@ -4,7 +4,7 @@ import { login } from './store/authSlice';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SharedLayout from './Components/SharedLayout/SharedLayout';
 import { getCourses } from './store/coursesSlice';
-import Skills from './Pages/Skills';
+import Skills from './Pages/Skiils/Skills';
 
 function App() {
 
