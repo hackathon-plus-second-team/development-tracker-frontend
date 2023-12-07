@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import BasicTabs from './ui-kit/Tab/Tab';
 import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import { login } from './store/authSlice';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SharedLayout from './Components/SharedLayout/SharedLayout';
 import { getCourses } from './store/coursesSlice';
+import Skills from './Pages/Skills';
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<SharedLayout />}>
-                    <Route index element={<BasicTabs />} />
+                    <Route index element={<Skills/>} />
                 </Route>
             </Routes>
         </BrowserRouter>
