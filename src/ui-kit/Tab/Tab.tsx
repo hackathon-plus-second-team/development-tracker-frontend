@@ -107,7 +107,7 @@ export default function BasicTabs({ courseData }: TBasicTabsProps) {
                     return (
                         /* вставить данные в компонент страницы, привязать к ней индекс и передать ее */
                         <CustomTabPanel value={value} index={index} key={index}>
-                            <ProgressbarList skills={el.skills} label="Junior" />
+                            <ProgressbarList skills={el.skills} label="Junior" isCheckbox={false} />
                             <RoundProgressbar label="Навыки подтверждены на" value={20} />
                             <Card deadline={'11.11.11'} goal={false} label="Стать мидлои" progressValue={22} />
                         </CustomTabPanel>

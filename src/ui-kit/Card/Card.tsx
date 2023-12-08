@@ -19,14 +19,14 @@ const Card = ({ goal, label, deadline, progressValue }: TCardProps) => {
                     <ProgressBar isCheckbox={false} isBig={false} skillName={label} value={progressValue} />
                     <p className={styles.text}>{`Дедлайн ${deadline}`}</p>
                     {/* Не работает без Browser Router */}
-                    <Link to="/goal" className={styles.button}>
+                    <Link to="/goal/{id}" className={styles.button}>
                         {'Посмотреть цель'}
                     </Link>
                 </>
             ) : (
                 <>
                     <p className={styles.text}>Добавь в цель те навыки, которые хочешь прокачать</p>
-                    <Link to="/setgoal">
+                    <Link to="/goal">
                         <CustomButton disabled={false} buttonVariant="contained" text="Установить цель" />
                     </Link>
                 </>

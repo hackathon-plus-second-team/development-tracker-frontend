@@ -1,6 +1,6 @@
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { ruRU } from '@mui/x-date-pickers/locales/';
-import { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import 'dayjs/locale/ru';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useState } from 'react';
@@ -46,13 +46,18 @@ const datePickerInputPropsStyle = {
     },
 };
 
-function Calendar() {
+function Calendar({ register }) {
     const [open, setOpen] = useState(false);
     const [onError, setOnError] = useState(false);
+    const [value, setValue] = useState('')
+    console.log(value)
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ru" localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}>
             <DatePicker
+                {...register('calendar')}
                 open={open}
+                value={value}
+                onChange={val => setValue(val)}
                 onClose={() => setOpen(false)}
                 onError={() => setOnError(true)}
                 closeOnSelect={false}

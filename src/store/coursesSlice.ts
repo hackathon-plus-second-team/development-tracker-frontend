@@ -40,7 +40,6 @@ export const getCourses = createAsyncThunk('courses/getCourses', async (_, thunk
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log(response.data);
         return response.data;
     } catch (error) {
         const err = error as AxiosError;

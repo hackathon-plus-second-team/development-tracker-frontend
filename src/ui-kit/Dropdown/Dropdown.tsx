@@ -4,12 +4,13 @@ import { ListItemIcon, ListItemText } from '@mui/material';
 import CheckIcon from '../../assets/img/check_mini.svg?react';
 import ArrowIcon from '../../assets/img/arrow_down.svg?react';
 import styles from './Dropdown.module.scss';
+
 type TValues = {
     id: number;
-    label: string;
+    name: string;
 };
 type TDropdonwProps = {
-    options: TValues[];
+    options: TValues[] | null;
     selectedValues: string[];
     placeholder: string;
 };
@@ -24,15 +25,15 @@ const Dropdown = ({ options, selectedValues, placeholder, ...rest }: TDropdonwPr
             displayEmpty
             inputProps={{ 'aria-label': 'Without label' }}
             IconComponent={(props) => <ArrowIcon {...props} />}
-            MenuProps={{
-                PaperProps: { sx: { left: `8px !important` } },
-            }}
+            // MenuProps={{
+            //     PaperProps: { sx: { left: `8px !important` } },
+            // }}
             renderValue={(values: Array<string>) =>
                 values.length ? (
                     values
                         .map((id) => {
-                            const selected = options.find((opt) => opt.id.toString() == id);
-                            return selected ? selected.label : id;
+                            const selected = options&&options.find((opt) => opt.id.toString() == id);
+                            return selected ? selected.name : id;
                         })
                         .join(', ')
                 ) : (
@@ -41,11 +42,11 @@ const Dropdown = ({ options, selectedValues, placeholder, ...rest }: TDropdonwPr
             }
             {...rest}
         >
-            {options.map(({ id, label }) => {
+            {options&&options.map(({ id, name }) => {
                 const selected = selectedValues.find((opt) => opt == id.toString());
                 return (
                     <MenuItem key={id} value={id}>
-                        <ListItemText primary={label} />
+                        <ListItemText primary={name} />
                         {selected && (
                             <ListItemIcon>
                                 <CheckIcon />
