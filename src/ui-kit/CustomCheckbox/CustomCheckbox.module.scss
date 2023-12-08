@@ -1,0 +1,7 @@
+@import '../../assets/styles/consts.scss';
+
+.label {
+    @include text-regular;
+    font-size: 13px;
+    line-height: 16px;
+}
