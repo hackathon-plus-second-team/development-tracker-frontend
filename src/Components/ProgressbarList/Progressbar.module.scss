@@ -1,0 +1,6 @@
+@import '../../assets/styles/consts.scss';
+
+.label {
+    @include text-bold;
+    margin: 0 0 12px;
+}

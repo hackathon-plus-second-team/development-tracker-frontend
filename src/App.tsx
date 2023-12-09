@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import { login } from './store/authSlice';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SharedLayout from './Components/SharedLayout/SharedLayout';
+import { getCourses } from './store/coursesSlice';
+import Skills from './Pages/Skiils/Skills';
 
 function App() {
     // dropdown - 26
@@ -30,15 +32,16 @@ function App() {
 
     const dispatch = useAppDispatch();
     useEffect(() => {
-        if (user) return;
+        if (token) return;
         dispatch(login({ email: 'TestUser@yandex.ru', password: 'ZQj-hBQ-c83-fmu' }));
-    }, [user, dispatch]);
+        dispatch(getCourses())
+    }, [token, dispatch]);
 
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<SharedLayout />}>
-                    <Route index element={<BasicTabs />} />
+                    <Route index element={<Skills/>} />
                 </Route>
             </Routes>
         </BrowserRouter>

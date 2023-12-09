@@ -17,7 +17,7 @@ export default function ProgressBar({ isBig, isCheckbox, value, skillName }: Pro
                 display: 'flex',
                 alignItems: 'center',
                 maxWidth: '368px',
-                padding: '4px',
+                padding: '8px 4px',
 
                 ...(isBig && {
                     '&:hover': {
