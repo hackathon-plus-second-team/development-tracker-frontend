@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
-import Dropdown from './ui-kit/Dropdown/Dropdown';
 import { SelectChangeEvent } from '@mui/material';
-import BasicTabs from './ui-kit/Tab/Tab';
 import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import { login } from './store/authSlice';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SharedLayout from './Components/SharedLayout/SharedLayout';
 import { getCourses } from './store/coursesSlice';
 import Skills from './Pages/Skiils/Skills';
+import Test from './Pages/Test/Test';
 
 function App() {
     // dropdown - 26
@@ -34,14 +33,18 @@ function App() {
     useEffect(() => {
         if (token) return;
         dispatch(login({ email: 'TestUser@yandex.ru', password: 'ZQj-hBQ-c83-fmu' }));
-        dispatch(getCourses())
+        dispatch(getCourses());
     }, [token, dispatch]);
 
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<SharedLayout />}>
-                    <Route index element={<Skills/>} />
+                    <Route index element={<Skills />} />
+                </Route>
+
+                <Route path="/test" element={<SharedLayout />}>
+                    <Route index element={<Test />} />
                 </Route>
             </Routes>
         </BrowserRouter>
