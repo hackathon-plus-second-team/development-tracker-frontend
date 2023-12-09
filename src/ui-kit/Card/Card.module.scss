@@ -1,0 +1,17 @@
+@import '../../assets/styles/consts.scss';
+.card {
+    display: flex;
+    width: 280px;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 16px;
+    border-radius: 8px;
+    border: 1px solid $black100;
+    background: $white;
+    box-shadow: 8px 8px 8px 0px rgba(221, 224, 228, 0.25);
+    &:hover {
+        border:1px solid $black300;
+    }
+}
