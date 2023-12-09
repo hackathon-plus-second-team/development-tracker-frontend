@@ -1,5 +1,6 @@
 import BasicTabs from './ui-kit/Tab/Tab';
 import ProgressBar from './ui-kit/ProgressBar/ProgressBar';
+import Calendar from "./ui-kit/Calendar/Calendar";
 
 function App() {
     return (
