@@ -1,2 +1,13 @@
 @import './consts.scss';
 @import '../fonts/fonts.css';
+
+body {
+    margin: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
