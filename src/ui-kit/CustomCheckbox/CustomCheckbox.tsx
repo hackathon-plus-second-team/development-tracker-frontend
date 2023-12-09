@@ -10,6 +10,8 @@ const CustomCheckbox = ({ label, ...rest }: TCustomCheckbox & CheckboxProps) => 
     return (
         <FormControlLabel
             sx={{
+                width: '100%',
+
                 '&:hover .MuiSvgIcon-root': {
                     backgroundColor: 'transparent',
                     outline: '1px solid #1D6BF3',
@@ -23,6 +25,10 @@ const CustomCheckbox = ({ label, ...rest }: TCustomCheckbox & CheckboxProps) => 
             control={
                 <Checkbox
                     sx={{
+                        padding: 0,
+                        margin: '0 8px 0 12px',
+                        position: 'relative',
+
                         '& .MuiSvgIcon-root': {
                             color: 'transparent',
                             outline: '1px solid #797981',
