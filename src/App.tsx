@@ -24,6 +24,8 @@ function App() {
         setSelectedCourse(typeof value === 'string' ? value.split(',') : value);
     };
 
+    // @ts-expect-error исправить
+    //eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { user, token } = useAppSelector((state) => state.auth);
 
     const dispatch = useAppDispatch();
