@@ -10,9 +10,8 @@ import Skill from './Pages/Skill/Skill';
 import TestResult from './Pages/TestResult/TestResult';
 
 function App() {
-    // @ts-expect-error исправить
-    //eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { user, token } = useAppSelector((state) => state.auth);
+
+    const {token } = useAppSelector((state) => state.auth);
 
     const dispatch = useAppDispatch();
     useEffect(() => {
