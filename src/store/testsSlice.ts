@@ -83,7 +83,7 @@ const initialState: TInitialState = {
 const json = localStorage.getItem('token');
 const token = json && JSON.parse(json);
 
-export const getTest = createAsyncThunk('tests/getTest', async (testId, thunkAPI) => {
+export const getTest = createAsyncThunk('tests/getTest', async (testId:string, thunkAPI) => {
     try {
         const response = await axios.get(`http://localhost/api/v1/tests/${testId}/`, {
             headers: {
