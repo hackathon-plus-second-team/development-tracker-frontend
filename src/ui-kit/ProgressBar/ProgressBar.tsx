@@ -2,6 +2,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
 import { barStyles } from './ProgressBarStyle';
 import style from './ProgressBar.module.scss';
+import CustomCheckbox from '../CustomCheckbox/CustomCheckbox';
 
 interface ProgressBarInterface {
     value: number;
@@ -20,6 +21,8 @@ export default function ProgressBar({ isBig, isCheckbox, value, skillName }: Pro
                 padding: '8px 4px',
 
                 ...(isBig && {
+                    justifyContent: 'space-between',
+
                     '&:hover': {
                         backgroundColor: 'rgba(204, 194, 237, 0.25)',
                         borderRadius: '4px',
@@ -46,24 +49,22 @@ export default function ProgressBar({ isBig, isCheckbox, value, skillName }: Pro
             {isBig ? (
                 isCheckbox ? (
                     <>
-                        {/* добавить кастомный чекбокс и лэйбл */}
-                        <input type="checkbox" />
-                        <p className={style.name}>{skillName}</p>
+                        <CustomCheckbox label={skillName} />
 
-                        <LinearProgress value={value} variant="determinate" sx={value === 100 ? barStyles.big.full : barStyles.big.progress} />
+                        <LinearProgress value={value} variant="determinate" sx={value >= 90 ? barStyles.big.full : barStyles.big.progress} />
                         <p className={style.percent}>{value}%</p>
                     </>
                 ) : (
                     <>
                         <p className={style.name}>{skillName}</p>
-                        <LinearProgress value={value} variant="determinate" sx={value >= 100 ? barStyles.big.full : barStyles.big.progress} />
+                        <LinearProgress value={value} variant="determinate" sx={value >= 90 ? barStyles.big.full : barStyles.big.progress} />
                         <p className={style.percent}>{value}%</p>
                     </>
                 )
             ) : (
                 <>
                     <p className={`${style.name} ${style.nameSmall}`}>{skillName}</p>
-                    <LinearProgress value={value} variant="determinate" sx={value >= 100 ? barStyles.small.full : barStyles.small.progress} />
+                    <LinearProgress value={value} variant="determinate" sx={value >= 90 ? barStyles.small.full : barStyles.small.progress} />
                     <p className={`${style.percent} ${style.percentSmall}`}>{value}%</p>
                 </>
             )}
