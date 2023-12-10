@@ -27,7 +27,7 @@ const Skill = () => {
                         <h3 className={styles.subHeading}>{skill?.name}</h3>
                         <p className={styles.text}>{skill?.description}</p>
                         <div className={styles.btnContainer}>
-                            {skill.level < 100 && skill.level > 0 ? (
+                            {skill.level < 100 ? (
                                 <Link to={`/tests/${skill.level_test}`} state={{ id: skill.level_test }}>
                                     <CustomButton text={btnText} buttonVariant="contained" disabled={false} />
                                 </Link>
