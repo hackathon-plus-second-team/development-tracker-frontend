@@ -12,7 +12,7 @@ const TestResult = () => {
     const location = useLocation();
     const { id } = location.state;
     const btnText = 'Прочитать материал из курса';
-console.log(location)
+
     useEffect(() => {
         dispatch(getResult(id));
 
@@ -27,7 +27,7 @@ console.log(location)
                         <div className={styles.textContainer}>
                             <h2 className={styles.heading}>Результаты теста</h2>
                             <h3 className={styles.subHeading}>{result.current_skill_test.skill}</h3>
-                            <p className={styles.text}>{`Тест пройден на ${result.current_skill_test.percentage_correct}%`}</p>
+                            <p className={styles.text}>{`Тест пройден на ${result.best_skill_result.level}%`}</p>
                             <span className={styles.subtext}>Для подтверждения навыка пройди тест на 90% и более процентов</span>
                             <div className={styles.answers}>
                                 <p>
@@ -49,13 +49,13 @@ console.log(location)
                                 )}
 
                                 {result.current_skill_test.percentage_correct < 100 ? (
-                                    <Link to={`/tests/${result.best_skill_result.id}`} state={{ id: result.best_skill_result.id }}>
+                                    <Link to={`/tests/${result.current_skill_test.level_test}`} state={{ id: result.current_skill_test.level_test }}>
                                         <CustomButton text="Пройти тест ещё раз" buttonVariant="outlined" disabled={false} />
                                     </Link>
                                 ) : null}
                             </div>
                         </div>
-                        <RoundProgressbar label="Навыки подтверждены" value={result.current_skill_test.percentage_correct} />
+                        <RoundProgressbar label="Навыки подтверждены" value={result.best_skill_result.level} />
                     </div>
                     <div className={styles.recomendations}>
                         <h3 className={styles.recomendationHeading}>Рекомендации для развития навыка</h3>
@@ -64,8 +64,8 @@ console.log(location)
                                 <h4 className={styles.linksHeading}>Курсы</h4>
                                 <ul className={styles.recomendationList}>
                                     {result.recommendations.courses.map((item) => (
-                                        <li>
-                                            <a className={styles.recomendationItem} href={item.url} target="_blank" rel="noopener noreferrer" key={item.name}>
+                                        <li key={item.name}>
+                                            <a className={styles.recomendationItem} href={item.url} target="_blank" rel="noopener noreferrer" >
                                                 {item.name}
                                             </a>
                                         </li>
@@ -77,8 +77,8 @@ console.log(location)
                                 <h4 className={styles.linksHeading}>Статьи</h4>
                                 <ul className={styles.recomendationList}>
                                     {result.recommendations.articles.map((item) => (
-                                        <li>
-                                            <a className={styles.recomendationItem} href={item.url} target="_blank" rel="noopener noreferrer" key={item.name}>
+                                        <li key={item.name}>
+                                            <a className={styles.recomendationItem} href={item.url} target="_blank" rel="noopener noreferrer" >
                                                 {item.name}
                                             </a>
                                         </li>
