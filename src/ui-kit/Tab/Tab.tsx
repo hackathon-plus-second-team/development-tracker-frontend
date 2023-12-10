@@ -18,6 +18,7 @@ type TCourse = {
     name: string;
     description: string;
     skills: TSkill[];
+    level: number
 };
 
 type TBasicTabsProps = {
@@ -109,7 +110,7 @@ export default function BasicTabs({ courseData }: TBasicTabsProps) {
                         /* вставить данные в компонент страницы, привязать к ней индекс и передать ее */
                         <CustomTabPanel value={value} index={index} key={index}>
                             <ProgressbarList skills={el.skills} label="Junior" />
-                            <RoundProgressbar label="Навыки подтверждены на" value={20} />
+                            <RoundProgressbar label="Навыки подтверждены на" value={el.level} />
                             <Card deadline={'11.11.11'} goal={false} label="Стать мидлои" progressValue={22} />
                         </CustomTabPanel>
                     );
