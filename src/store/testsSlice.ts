@@ -10,14 +10,16 @@ type TTest = {
     questions: TQuestion[];
 };
 
-type TQuestion = {
+export type Answer = {
+    name: string;
+    number: number;
+};
+
+export type TQuestion = {
     name: number;
     explanation: string;
     number: number;
-    answers: {
-        name: string;
-        number: number;
-    }[];
+    answers: Answer[];
 };
 
 type TAnswer = {
@@ -25,49 +27,48 @@ type TAnswer = {
     user_answer: number;
 };
 
- type TResult = {
+type TResult = {
     currentSkillTest: TCurrentSkillTest;
-    bestSkillResult:  TBestSkillResult;
-    recommendations:  TRecommendations;
-}
+    bestSkillResult: TBestSkillResult;
+    recommendations: TRecommendations;
+};
 
- type TBestSkillResult = {
-    id:    number;
-    name:  string;
-    level: number;
-}
-
- type TCurrentSkillTest = {
-    skill:             string;
-    levelTest:         number;
-    correctAnswers:    number;
-    countQuestions:    number;
-    percentageCorrect: string;
-}
-
- type TRecommendations = {
-    courses:  TCourse[];
-    articles: TArticle[];
-}
-
- type TArticle = {
+type TBestSkillResult = {
+    id: number;
     name: string;
-    url:  string;
-}
+    level: number;
+};
 
- type TCourse = {
-    id:          number;
-    name:        string;
-    skills:      string;
+type TCurrentSkillTest = {
+    skill: string;
+    levelTest: number;
+    correctAnswers: number;
+    countQuestions: number;
+    percentageCorrect: string;
+};
+
+type TRecommendations = {
+    courses: TCourse[];
+    articles: TArticle[];
+};
+
+type TArticle = {
+    name: string;
+    url: string;
+};
+
+type TCourse = {
+    id: number;
+    name: string;
+    skills: string;
     description: string;
-    url:         string;
-}
-
+    url: string;
+};
 
 type TInitialState = {
     test: TTest | null;
     user_answers: TAnswer[];
-    result: TResult | null
+    result: TResult | null;
     isLoading: boolean;
     isError: boolean;
     isSuccess: boolean;
@@ -123,7 +124,7 @@ export const sendAnswers = createAsyncThunk('tests/sendAnswer', async ({ user_an
             headers: {
                 Authorization: `Bearer ${token}`,
             },
-            user_answers
+            user_answers,
         });
         console.log(response.data);
         return response.data;
@@ -193,6 +194,6 @@ const testsSlice = createSlice({
 
 export const selectQuestions = (state: RootState) => state.tests.test;
 export const selectResult = (state: RootState) => state.tests.result;
-export const {answerAdded} = testsSlice.actions
+export const { answerAdded } = testsSlice.actions;
 
 export default testsSlice.reducer;

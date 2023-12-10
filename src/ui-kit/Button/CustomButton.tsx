@@ -7,10 +7,10 @@ interface ButtonProps {
     disabled: boolean;
 }
 
-export default function CustomButton({ text, buttonVariant, disabled }: ButtonProps) {
+export default function CustomButton({ text, buttonVariant, disabled, onClick }: ButtonProps) {
     return (
         // @ts-expect-error исправить
-        <Button type="button" disabled={disabled} variant={buttonVariant} sx={buttonStyle[buttonVariant]}>
+        <Button type="button" disabled={disabled} variant={buttonVariant} sx={buttonStyle[buttonVariant]} onClick={onClick}>
             {text}
         </Button>
     );
