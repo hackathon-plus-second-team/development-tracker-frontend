@@ -5,21 +5,8 @@ import Box from '@mui/material/Box';
 import ProgressbarList from '../../Components/ProgressbarList/ProgressbarList';
 import RoundProgressbar from '../RoundProgressbar/RoundProgressbar';
 import Card from '../Card/Card';
-
+import {TCourse } from '../../store/coursesSlice';
 // интерфейс получаемых от бэка данных
-type TSkill = {
-    id: number;
-    name: string;
-    level: number;
-};
-
-type TCourse = {
-    id: number;
-    name: string;
-    description: string;
-    skills: TSkill[];
-    level: number
-};
 
 type TBasicTabsProps = {
     courseData: TCourse[] | null;

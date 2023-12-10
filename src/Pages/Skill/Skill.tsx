@@ -14,7 +14,7 @@ const Skill = () => {
     const navigate = useNavigate();
     useEffect(() => {
         dispatch(getSkill(location.pathname.slice(8)));
-    }, [dispatch]);
+    }, [dispatch, location]);
 
     const btnText = skill && skill.level > 0 ? 'Пройти тест ещё раз' : 'Пройти тест';
     return (

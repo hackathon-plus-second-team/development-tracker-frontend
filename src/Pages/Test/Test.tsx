@@ -27,23 +27,21 @@ const Test = () => {
 
     useEffect(() => {
         id ? dispatch(getTest(id)) : dispatch(getTest('1'));
-
-        return () => {};
     }, [dispatch, id]);
 
     useEffect(() => {
-        if (answers.length === test?.questions?.length) {
-            const testResult = { testId: test.id, user_answers: answers };
-            dispatch(sendAnswers(testResult));
+        if (test) {
+            if (answers.length === test?.questions?.length) {
+                const testResult = { testId: test.id, user_answers: answers };
+                dispatch(sendAnswers(testResult));
 
-            setValue(0);
-            setButtonText('Завершить тест');
+                setValue(0);
+                setButtonText('Завершить тест');
 
-            return navigate('/test/result', { state: { id: test.id } });
+                return navigate('/test/result', { state: { id: test.id } });
+            }
         }
-
-        return () => {};
-    }, [answers]);
+    }, [answers, dispatch, navigate, test]);
 
     return (
         <section className={styles.test}>

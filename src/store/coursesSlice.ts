@@ -1,17 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
 import { RootState } from './store';
-type TSkill = {
+export type TSkill = {
     id: number;
     name: string;
     level: number;
 };
 
-type TCourse = {
+export type TCourse = {
     id: number;
     name: string;
     description: string;
     skills: TSkill[];
+    level: number
 };
 
 type TInitialState = {

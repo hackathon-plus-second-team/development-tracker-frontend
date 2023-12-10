@@ -5,6 +5,7 @@ interface ButtonProps {
     text: string;
     buttonVariant: string;
     disabled: boolean;
+    onClick?:React.MouseEventHandler<HTMLAnchorElement>
 }
 
 export default function CustomButton({ text, buttonVariant, disabled, onClick }: ButtonProps) {
