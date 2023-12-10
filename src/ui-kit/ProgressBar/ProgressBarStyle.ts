@@ -1,7 +1,8 @@
 export const barStyles = {
     big: {
         progress: {
-            width: '200px',
+            minWidth: '200px',
+            maxWwidth: '200px',
             backgroundColor: 'white',
             border: '1px solid #DDE0E4',
             borderRadius: '1px',
@@ -19,7 +20,8 @@ export const barStyles = {
             },
         },
         full: {
-            width: '200px',
+            minWidth: '200px',
+            maxWwidth: '200px',
             backgroundColor: 'white',
             border: '1px solid #87CC9E',
             borderRadius: '1px',

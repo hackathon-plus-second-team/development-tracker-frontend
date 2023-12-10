@@ -16,8 +16,8 @@ const ProgressbarList = ({ skills, label }: ProgressbarListProps) => {
         <div>
             <h2 className={styles.label}>{label}</h2>
             {skills.map((skill) => (
-                <Link to={`skills/${skill.id}`} key={skill.id}>
-                    <ProgressBar value={skill.level} skillName={skill.name} isBig={true} isCheckbox={false}  />
+                <Link to={`skills/${skill.id}`} key={skill.id} className={styles.link}>
+                    <ProgressBar value={skill.level} skillName={skill.name} isBig={true} isCheckbox={false} />
                 </Link>
             ))}
         </div>
