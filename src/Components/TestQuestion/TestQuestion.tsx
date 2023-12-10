@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import styles from './TestQuestion.module.scss';
+import { testStyle, radioStyle, radioLabelStyle } from './TestQuestionStyle';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -21,8 +22,7 @@ const TestQuestion = ({ data, buttonText, onClick, questionIndex }) => {
 
         const answer = {
             question: questionIndex,
-            // user_answer: Number(e.target.value),
-            user_answer: e.target.value,
+            user_answer: Number(e.target.value),
         };
 
         setValue(answer);
@@ -38,14 +38,16 @@ const TestQuestion = ({ data, buttonText, onClick, questionIndex }) => {
         <>
             <h2 className={styles.title}>{data.name}</h2>
 
-            <FormControl>
-                <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
+            <FormControl sx={{ gap: '40px' }}>
+                <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group" sx={testStyle}>
                     {data.answers.map((el: Answer) => {
-                        return <FormControlLabel key={el.number} value={el.number} control={<Radio />} label={el.name} onChange={chooseAnswer} />;
+                        return <FormControlLabel sx={radioLabelStyle} key={el.number} value={el.number} control={<Radio sx={radioStyle} />} label={el.name} onChange={chooseAnswer} />;
                     })}
                 </RadioGroup>
 
-                <CustomButton text={buttonText} buttonVariant="contained" disabled={buttonDisable} onClick={sendAnswer} />
+                <div>
+                    <CustomButton text={buttonText} buttonVariant="contained" disabled={buttonDisable} onClick={sendAnswer} />
+                </div>
             </FormControl>
         </>
     );
