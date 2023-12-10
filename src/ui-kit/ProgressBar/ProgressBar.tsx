@@ -2,7 +2,6 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
 import { barStyles } from './ProgressBarStyle';
 import style from './ProgressBar.module.scss';
-import { Link } from 'react-router-dom';
 
 interface ProgressBarInterface {
     value: number;
@@ -13,7 +12,6 @@ interface ProgressBarInterface {
 
 export default function ProgressBar({ isBig, isCheckbox, value, skillName }: ProgressBarInterface) {
     return (
-        <Link to={{ pathname: '/test', state: { skillName } }} className={style.link}>
             <Box
                 sx={{
                     display: 'flex',
@@ -70,6 +68,5 @@ export default function ProgressBar({ isBig, isCheckbox, value, skillName }: Pro
                     </>
                 )}
             </Box>
-        </Link>
     );
 }
