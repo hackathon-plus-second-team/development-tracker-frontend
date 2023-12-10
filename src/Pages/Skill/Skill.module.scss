@@ -1,0 +1,38 @@
+@import '../../assets/styles/consts.scss';
+
+.skill {
+    display: flex;
+    gap: 32px;
+    max-width: 1280px;
+    padding: 72px 32px;
+
+    .back {
+        cursor: pointer;
+    }
+
+    .textContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: 400px;
+
+        .heading {
+            @include h2-bold;
+            margin-bottom: 32px;
+        }
+        .subHeading {
+            @include subtitle-bold;
+            margin-bottom: 24px;
+        }
+        .text {
+            @include text-regular;
+            margin-bottom: 40px;
+            max-width: 370px;
+        }
+        .btnContainer{
+            display: flex;
+            gap: 13px;
+            justify-content: center;
+        }
+    }
+}

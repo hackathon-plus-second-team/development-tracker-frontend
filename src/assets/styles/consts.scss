@@ -1,0 +1,108 @@
+// main colors
+
+$black900: #1a1b22;
+$black500: #797981;
+$black300: #b5b5b7;
+$black100: #dde0e4;
+$grey: #f9fafb;
+$white: #ffffff;
+$blue: #5a9bff;
+$blueMain: #1d6bf3;
+$blueBG: #f1f6ff;
+$red: #ff0200;
+
+// add colors
+
+$green: #87cc9e;
+$purple: #7f67d2;
+$orange: #ffce92;
+$greenLight: #c2e5ce;
+$purpleLight: #ccc2ed;
+$orngLight: #ffe1bd;
+$rose: #ffdde5;
+$yellow: #fff9d3;
+$pink: #ffbffdde;
+$brown: #a9917542;
+$blueLight: #acccff;
+
+// fonts
+
+@mixin h1-regular {
+    font-family: 'Display-Regular', sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+}
+
+@mixin h1-bold {
+    font-family: 'Display-Medium', sans-serif;
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: 0em;
+}
+
+@mixin h2-regular {
+    font-family: 'Display-Regular', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0em;
+}
+
+@mixin h2-bold {
+    font-family: 'Display-Medium', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0em;
+}
+
+@mixin h3-regular {
+    font-family: 'Display-Regular', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+}
+
+@mixin h3-bold {
+    font-family: 'Display-Medium', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+}
+
+@mixin subtitle-regular {
+    font-family: 'Text-Regular', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+}
+
+@mixin subtitle-bold {
+    font-family: 'Text-Medium', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+}
+
+@mixin text-regular {
+    font-family: 'Text-Regular', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+}
+
+@mixin text-bold {
+    font-family: 'Text-Medium', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+}
