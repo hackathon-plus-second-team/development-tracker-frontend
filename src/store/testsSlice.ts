@@ -102,7 +102,7 @@ export const getTest = createAsyncThunk('tests/getTest', async (testId, thunkAPI
     }
 });
 
-export const getResult = createAsyncThunk('tests/getTest', async (testId, thunkAPI) => {
+export const getResult = createAsyncThunk('tests/getResult', async (testId, thunkAPI) => {
     try {
         const response = await axios.get(`http://localhost/api/v1/tests/${testId}/result`, {
             headers: {
