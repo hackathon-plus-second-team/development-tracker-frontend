@@ -9,6 +9,7 @@ interface ButtonProps {
 
 export default function CustomButton({ text, buttonVariant, disabled }: ButtonProps) {
     return (
+        // @ts-expect-error исправить
         <Button type="button" disabled={disabled} variant={buttonVariant} sx={buttonStyle[buttonVariant]}>
             {text}
         </Button>

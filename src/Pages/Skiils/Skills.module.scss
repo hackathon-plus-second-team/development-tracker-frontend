@@ -1,0 +1,12 @@
+@import '../../assets/styles/consts.scss';
+
+.skills {
+    width: 100%;
+    max-width: 1280px;
+    padding: 72px 60px 72px 32px;
+
+    .heading {
+        @include h2-bold;
+        margin: 0 0 32px;
+    }
+}
