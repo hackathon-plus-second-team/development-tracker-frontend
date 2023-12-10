@@ -1,11 +1,15 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import authReducer from './authSlice';
 import coursesReducer from './coursesSlice';
+import skillsReducer from './skillsSlice';
+import testsReducer from './testsSlice';
 
 const store = configureStore({
     reducer: {
         auth: authReducer,
-        courses: coursesReducer
+        courses: coursesReducer,
+        skills: skillsReducer,
+        tests: testsReducer,
     },
 });
 
