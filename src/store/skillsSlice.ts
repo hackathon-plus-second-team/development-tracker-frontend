@@ -36,17 +36,17 @@ const initialState: TInitialState = {
 const json = localStorage.getItem('token');
 const token = json && JSON.parse(json);
 
-export const getCourses = createAsyncThunk('skills/getSkill', async (skillId, thunkAPI) => {
+export const getSkill = createAsyncThunk('skills/getSkill', async (id:string, thunkAPI) => {
     try {
-        const response = await axios.get('http://localhost/api/v1/skills/{id}/', {
+        const response = await axios.get(`http://localhost/api/v1/skills/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
-            params: skillId
         });
         console.log(response.data);
         return response.data;
     } catch (error) {
+        console.log(error)
         const err = error as AxiosError;
         return thunkAPI.rejectWithValue(err.response?.data);
     }
@@ -58,15 +58,15 @@ const skillsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(getCourses.pending, (state) => {
+            .addCase(getSkill.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(getCourses.fulfilled, (state, action) => {
+            .addCase(getSkill.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isSuccess = true;
                 state.currentSkill = action.payload;
             })
-            .addCase(getCourses.rejected, (state, action) => {
+            .addCase(getSkill.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.message = action.payload;

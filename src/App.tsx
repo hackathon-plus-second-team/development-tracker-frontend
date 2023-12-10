@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SharedLayout from './Components/SharedLayout/SharedLayout';
 import { getCourses } from './store/coursesSlice';
 import Skills from './Pages/Skiils/Skills';
+import Skill from './Pages/Skill/Skill';
 
 function App() {
     // dropdown - 26
@@ -42,6 +43,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<SharedLayout />}>
                     <Route index element={<Skills/>} />
+                    <Route path='skills/:id' element={<Skill/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

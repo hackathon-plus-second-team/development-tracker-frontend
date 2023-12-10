@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import ProgressBar from '../../ui-kit/ProgressBar/ProgressBar';
-import styles from "./Progressbar.module.scss"
+import styles from './Progressbar.module.scss';
 type TSkill = {
     id: number;
     name: string;
@@ -7,7 +8,7 @@ type TSkill = {
 };
 type ProgressbarListProps = {
     skills: TSkill[];
-    label: string
+    label: string;
 };
 
 const ProgressbarList = ({ skills, label }: ProgressbarListProps) => {
@@ -15,7 +16,9 @@ const ProgressbarList = ({ skills, label }: ProgressbarListProps) => {
         <div>
             <h2 className={styles.label}>{label}</h2>
             {skills.map((skill) => (
-                <ProgressBar value={skill.level} skillName={skill.name} isBig={true} isCheckbox={false}  key={skill.id}/>
+                <Link to={`skills/${skill.id}`} key={skill.id}>
+                    <ProgressBar value={skill.level} skillName={skill.name} isBig={true} isCheckbox={false}  />
+                </Link>
             ))}
         </div>
     );
