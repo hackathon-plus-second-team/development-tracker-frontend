@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './Test.module.scss';
-import { useLocation, useEffect } from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
 // import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 // import { getCourses } from '../../store/coursesSlice';
 // import {getAllCourses} from '../../store/coursesSlice'

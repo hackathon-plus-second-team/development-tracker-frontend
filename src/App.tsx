@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { SelectChangeEvent } from '@mui/material';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import { login } from './store/authSlice';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -25,8 +24,9 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<SharedLayout />}>
-                    <Route index element={<Skills/>} />
-                    <Route path='skills/:id' element={<Skill/>}/>
+                    <Route index element={<Skills />} />
+                    <Route path="skills/:id" element={<Skill />} />
+                    <Route path="tests/:id" element={<Test />} />
                 </Route>
             </Routes>
         </BrowserRouter>
