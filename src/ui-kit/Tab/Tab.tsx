@@ -85,7 +85,7 @@ export default function BasicTabs({ courseData }: TBasicTabsProps) {
                                 sx={{
                                     color: '#1A1B22',
                                     textAlign: 'center',
-                                    fontFamily: 'Display-Regular',
+                                    fontFamily: 'Text-Regular, sans-serif',
                                     fontSize: '16px',
                                     fontWeight: 400,
                                     lineHeight: '20px',
