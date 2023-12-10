@@ -17,7 +17,7 @@ export type TQuestion = {
     answers: TAnswer[];
 };
 
-type TAnswer = {
+export type TAnswer = {
     name: string;
     number: number;
 };
@@ -113,14 +113,17 @@ export const getResult = createAsyncThunk('tests/getResult', async (testId: stri
     }
 });
 
-export const sendAnswers = createAsyncThunk('tests/sendAnswer', async ({ user_answers, testId }: { user_answers: TAnswer[]; testId: string }, thunkAPI) => {
+export const sendAnswers = createAsyncThunk('tests/sendAnswer', async ({ user_answers, testId }: { user_answers: TAnswer[]; testId: number }, thunkAPI) => {
     try {
-        const response = await axios.post(`http://localhost/api/v1/tests/${testId}/answer`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
+        const response = await axios.post(
+            `http://localhost/api/v1/tests/${testId}/answer/`,
+            { user_answers },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             },
-            user_answers,
-        });
+        );
         console.log(response.data);
         return response.data;
     } catch (error) {

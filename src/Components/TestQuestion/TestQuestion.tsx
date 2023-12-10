@@ -1,9 +1,11 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import styles from './TestQuestion.module.scss';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import { TQuestion, Answer } from '../../store/testsSlice';
+import { Answer } from '../../store/testsSlice';
 import CustomButton from '../../ui-kit/Button/CustomButton';
 import { answerAdded } from '../../store/testsSlice';
 import { useAppDispatch } from '../../hooks/hooks';

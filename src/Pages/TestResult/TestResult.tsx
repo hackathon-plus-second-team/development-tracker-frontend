@@ -12,7 +12,7 @@ const TestResult = () => {
     const location = useLocation();
     const { id } = location.state;
     const btnText = 'Прочитать материал из курса';
-
+console.log(location)
     useEffect(() => {
         dispatch(getResult(id));
 

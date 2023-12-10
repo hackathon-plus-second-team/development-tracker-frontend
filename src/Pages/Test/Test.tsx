@@ -18,17 +18,18 @@ const Test = () => {
 
     function onClick() {
         setValue(value + 1);
-
-        if (value + 1 === test?.questions?.length - 1) {
-            setButtonText('Завершить тест');
+        if (test) {
+            if (value + 1 === test?.questions?.length - 1) {
+                setButtonText('Завершить тест');
+            }
         }
     }
 
     useEffect(() => {
-        id ? dispatch(getTest(id)) : dispatch(getTest(1));
+        id ? dispatch(getTest(id)) : dispatch(getTest('1'));
 
         return () => {};
-    }, [dispatch]);
+    }, [dispatch, id]);
 
     useEffect(() => {
         if (answers.length === test?.questions?.length) {
@@ -38,7 +39,7 @@ const Test = () => {
             setValue(0);
             setButtonText('Завершить тест');
 
-            return navigate('/test/result', { state: { id } });
+            return navigate('/test/result', { state: { id: test.id } });
         }
 
         return () => {};
