@@ -5,20 +5,8 @@ import Box from '@mui/material/Box';
 import ProgressbarList from '../../Components/ProgressbarList/ProgressbarList';
 import RoundProgressbar from '../RoundProgressbar/RoundProgressbar';
 import Card from '../Card/Card';
-
+import {TCourse } from '../../store/coursesSlice';
 // интерфейс получаемых от бэка данных
-type TSkill = {
-    id: number;
-    name: string;
-    level: number;
-};
-
-type TCourse = {
-    id: number;
-    name: string;
-    description: string;
-    skills: TSkill[];
-};
 
 type TBasicTabsProps = {
     courseData: TCourse[] | null;
@@ -84,7 +72,7 @@ export default function BasicTabs({ courseData }: TBasicTabsProps) {
                                 sx={{
                                     color: '#1A1B22',
                                     textAlign: 'center',
-                                    fontFamily: 'Display-Regular',
+                                    fontFamily: 'Text-Regular, sans-serif',
                                     fontSize: '16px',
                                     fontWeight: 400,
                                     lineHeight: '20px',
@@ -109,7 +97,7 @@ export default function BasicTabs({ courseData }: TBasicTabsProps) {
                         /* вставить данные в компонент страницы, привязать к ней индекс и передать ее */
                         <CustomTabPanel value={value} index={index} key={index}>
                             <ProgressbarList skills={el.skills} label="Junior" />
-                            <RoundProgressbar label="Навыки подтверждены на" value={20} />
+                            <RoundProgressbar label="Навыки подтверждены на" value={el.level} />
                             <Card deadline={'11.11.11'} goal={false} label="Стать мидлои" progressValue={22} />
                         </CustomTabPanel>
                     );

@@ -1,0 +1,28 @@
+@import '../../assets/styles/consts.scss';
+
+.test {
+    width: 100%;
+    max-width: 1280px;
+    padding: 72px 60px 72px 88px;
+    position: relative;
+
+    .heading {
+        @include h2-bold;
+        margin: 0 0 32px;
+        color: $black900;
+    }
+
+    .buttonBack {
+        background-image: url(../../assets/img/back.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 24px;
+        display: block;
+        width: 32px;
+        height: 32px;
+
+        position: absolute;
+        top: 72px;
+        left: 32px;
+    }
+}

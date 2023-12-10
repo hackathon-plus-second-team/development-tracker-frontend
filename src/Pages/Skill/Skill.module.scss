@@ -18,14 +18,16 @@
 
         .heading {
             @include h2-bold;
-            margin: 0 0 32px;
+            margin-bottom: 32px;
         }
         .subHeading {
             @include subtitle-bold;
+            margin-bottom: 24px;
         }
         .text {
             @include text-regular;
-            margin-bottom: 16px;
+            margin-bottom: 40px;
+            max-width: 370px;
         }
         .btnContainer{
             display: flex;

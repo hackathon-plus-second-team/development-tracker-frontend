@@ -7,7 +7,7 @@ type TSkill = {
     name:        string;
     description: string;
     level:       number;
-    levelTest:   number;
+    level_test:   number;
     userCources: UserCource[];
 }
 

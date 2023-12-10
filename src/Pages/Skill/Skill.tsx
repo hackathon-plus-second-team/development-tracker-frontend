@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
 import { getCurrentSkill, getSkill } from '../../store/skillsSlice';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import RoundProgressbar from '../../ui-kit/RoundProgressbar/RoundProgressbar';
 import CustomButton from '../../ui-kit/Button/CustomButton';
 import BackArrow from '../../assets/img/back.svg?react';
@@ -14,10 +14,9 @@ const Skill = () => {
     const navigate = useNavigate();
     useEffect(() => {
         dispatch(getSkill(location.pathname.slice(8)));
-    }, [dispatch]);
+    }, [dispatch, location]);
 
     const btnText = skill && skill.level > 0 ? 'Пройти тест ещё раз' : 'Пройти тест';
-
     return (
         <section className={styles.skill}>
             {skill ? (
@@ -28,8 +27,12 @@ const Skill = () => {
                         <h3 className={styles.subHeading}>{skill?.name}</h3>
                         <p className={styles.text}>{skill?.description}</p>
                         <div className={styles.btnContainer}>
-                            <CustomButton text={btnText} buttonVariant="contained" disabled={false} />
-                            {skill.level < 100 && skill.level > 0 ? <CustomButton text="Прочитать материалы" buttonVariant="outlined" disabled={false} /> : null}
+                            {skill.level < 100 ? (
+                                <Link to={`/tests/${skill.level_test}`} state={{ id: skill.level_test }}>
+                                    <CustomButton text={btnText} buttonVariant="contained" disabled={false} />
+                                </Link>
+                            ) : null}
+                            <CustomButton text="Прочитать материалы" buttonVariant="outlined" disabled={false} />
                         </div>
                     </div>
                     <RoundProgressbar label="Навыки подтверждены" value={skill.level} />

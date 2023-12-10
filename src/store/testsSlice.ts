@@ -6,68 +6,64 @@ type TTest = {
     id: number;
     name: string;
     skill: string;
-    getCountQuestions: number;
+    _get_count_questions: number;
     questions: TQuestion[];
 };
 
-type TQuestion = {
+export type TQuestion = {
     name: number;
     explanation: string;
     number: number;
-    answers: {
-        name: string;
-        number: number;
-    }[];
+    answers: TAnswer[];
 };
 
-type TAnswer = {
-    question: number;
-    user_answer: number;
-};
-
- type TResult = {
-    currentSkillTest: TCurrentSkillTest;
-    bestSkillResult:  TBestSkillResult;
-    recommendations:  TRecommendations;
-}
-
- type TBestSkillResult = {
-    id:    number;
-    name:  string;
-    level: number;
-}
-
- type TCurrentSkillTest = {
-    skill:             string;
-    levelTest:         number;
-    correctAnswers:    number;
-    countQuestions:    number;
-    percentageCorrect: string;
-}
-
- type TRecommendations = {
-    courses:  TCourse[];
-    articles: TArticle[];
-}
-
- type TArticle = {
+export type TAnswer = {
     name: string;
-    url:  string;
-}
+    number: number;
+};
 
- type TCourse = {
-    id:          number;
-    name:        string;
-    skills:      string;
+type TResult = {
+    current_skill_test: TCurrentSkillTest;
+    best_skill_result: TBestSkillResult;
+    recommendations: TRecommendations;
+};
+
+type TBestSkillResult = {
+    id: number;
+    name: string;
+    level: number;
+};
+
+type TCurrentSkillTest = {
+    skill: string;
+    level_test: number;
+    correct_answers: number;
+    count_questions: number;
+    percentage_correct: number;
+};
+
+type TRecommendations = {
+    courses: TCourse[];
+    articles: TArticle[];
+};
+
+type TArticle = {
+    name: string;
+    url: string;
+};
+
+type TCourse = {
+    id: number;
+    name: string;
+    skills: string;
     description: string;
-    url:         string;
-}
-
+    url: string;
+};
 
 type TInitialState = {
     test: TTest | null;
     user_answers: TAnswer[];
-    result: TResult | null
+    result: TResult | null;
     isLoading: boolean;
     isError: boolean;
     isSuccess: boolean;
@@ -87,7 +83,7 @@ const initialState: TInitialState = {
 const json = localStorage.getItem('token');
 const token = json && JSON.parse(json);
 
-export const getTest = createAsyncThunk('tests/getTest', async (testId, thunkAPI) => {
+export const getTest = createAsyncThunk('tests/getTest', async (testId: string, thunkAPI) => {
     try {
         const response = await axios.get(`http://localhost/api/v1/tests/${testId}/`, {
             headers: {
@@ -102,7 +98,7 @@ export const getTest = createAsyncThunk('tests/getTest', async (testId, thunkAPI
     }
 });
 
-export const getResult = createAsyncThunk('tests/getResult', async (testId, thunkAPI) => {
+export const getResult = createAsyncThunk('tests/getResult', async (testId: string, thunkAPI) => {
     try {
         const response = await axios.get(`http://localhost/api/v1/tests/${testId}/result`, {
             headers: {
@@ -117,14 +113,17 @@ export const getResult = createAsyncThunk('tests/getResult', async (testId, thun
     }
 });
 
-export const sendAnswers = createAsyncThunk('tests/sendAnswer', async ({ user_answers, testId }: { user_answers: TAnswer[]; testId: string }, thunkAPI) => {
+export const sendAnswers = createAsyncThunk('tests/sendAnswer', async ({ user_answers, testId }: { user_answers: TAnswer[]; testId: number }, thunkAPI) => {
     try {
-        const response = await axios.post(`http://localhost/api/v1/tests/${testId}/answer`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
+        const response = await axios.post(
+            `http://localhost/api/v1/tests/${testId}/answer/`,
+            { user_answers },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             },
-            user_answers
-        });
+        );
         console.log(response.data);
         return response.data;
     } catch (error) {
@@ -193,6 +192,6 @@ const testsSlice = createSlice({
 
 export const selectQuestions = (state: RootState) => state.tests.test;
 export const selectResult = (state: RootState) => state.tests.result;
-export const {answerAdded} = testsSlice.actions
+export const { answerAdded } = testsSlice.actions;
 
 export default testsSlice.reducer;
