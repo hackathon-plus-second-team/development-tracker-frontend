@@ -1,0 +1,96 @@
+@import '../../assets/styles/consts.scss';
+
+.results {
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+    padding: 72px 32px;
+    gap: 100px;
+
+    .resultsContainer {
+        display: flex;
+        gap: 114px;
+
+        .textContainer {
+            display: flex;
+            flex-direction: column;
+            max-width: 275px;
+
+            .heading {
+                @include h2-bold;
+                margin-bottom: 32px;
+            }
+
+            .subHeading {
+                @include subtitle-bold;
+                margin-bottom: 24px;
+            }
+
+            .text {
+                @include text-regular;
+                margin-bottom: 40px;
+                max-width: 370px;
+            }
+
+            .subtext {
+                @include text-regular;
+                font-size: 13px;
+                line-height: 20px;
+                color: $black500;
+            }
+
+            .answers {
+                @include text-regular;
+                font-size: 13px;
+                line-height: 20px;
+                margin: 24px 0 40px;
+                gap: 12px;
+                p {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+
+            .btnContainer {
+                display: flex;
+                flex-direction: column;
+                gap: 13px;
+                justify-content: center;
+                max-width: 275px;
+            }
+        }
+    }
+
+    .recomendations {
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+
+        .recomendationHeading {
+            @include text-bold;
+        }
+
+        .linksHeading {
+            @include text-regular;
+        }
+
+        .recomendationContainer {
+            display: flex;
+            width: 100%;
+            gap: 60px;
+
+            .recomendationList {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .recomendationItem {
+                @include text-regular;
+                font-size: 14px;
+                // text-decoration: none;
+                color: $black900;
+            }
+        }
+    }
+}

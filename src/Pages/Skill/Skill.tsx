@@ -27,9 +27,12 @@ const Skill = () => {
                         <h3 className={styles.subHeading}>{skill?.name}</h3>
                         <p className={styles.text}>{skill?.description}</p>
                         <div className={styles.btnContainer}>
-                            <Link to={`/tests/${skill.level_test}`} state={{id: skill.level_test}}>
-                            <CustomButton text={btnText} buttonVariant="contained" disabled={false} /></Link>
-                            {skill.level < 100 && skill.level > 0 ? <CustomButton text="Прочитать материалы" buttonVariant="outlined" disabled={false} /> : null}
+                            {skill.level < 100 && skill.level > 0 ? (
+                                <Link to={`/tests/${skill.level_test}`} state={{ id: skill.level_test }}>
+                                    <CustomButton text={btnText} buttonVariant="contained" disabled={false} />
+                                </Link>
+                            ) : null}
+                            <CustomButton text="Прочитать материалы" buttonVariant="outlined" disabled={false} />
                         </div>
                     </div>
                     <RoundProgressbar label="Навыки подтверждены" value={skill.level} />

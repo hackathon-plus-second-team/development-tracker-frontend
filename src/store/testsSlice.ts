@@ -6,30 +6,25 @@ type TTest = {
     id: number;
     name: string;
     skill: string;
-    getCountQuestions: number;
+    _get_count_questions: number;
     questions: TQuestion[];
-};
-
-export type Answer = {
-    name: string;
-    number: number;
 };
 
 export type TQuestion = {
     name: number;
     explanation: string;
     number: number;
-    answers: Answer[];
+    answers: TAnswer[];
 };
 
 type TAnswer = {
-    question: number;
-    user_answer: number;
+    name: string;
+    number: number;
 };
 
 type TResult = {
-    currentSkillTest: TCurrentSkillTest;
-    bestSkillResult: TBestSkillResult;
+    current_skill_test: TCurrentSkillTest;
+    best_skill_result: TBestSkillResult;
     recommendations: TRecommendations;
 };
 
@@ -41,10 +36,10 @@ type TBestSkillResult = {
 
 type TCurrentSkillTest = {
     skill: string;
-    levelTest: number;
-    correctAnswers: number;
-    countQuestions: number;
-    percentageCorrect: string;
+    level_test: number;
+    correct_answers: number;
+    count_questions: number;
+    percentage_correct: number;
 };
 
 type TRecommendations = {
@@ -88,7 +83,7 @@ const initialState: TInitialState = {
 const json = localStorage.getItem('token');
 const token = json && JSON.parse(json);
 
-export const getTest = createAsyncThunk('tests/getTest', async (testId, thunkAPI) => {
+export const getTest = createAsyncThunk('tests/getTest', async (testId: string, thunkAPI) => {
     try {
         const response = await axios.get(`http://localhost/api/v1/tests/${testId}/`, {
             headers: {
@@ -103,7 +98,7 @@ export const getTest = createAsyncThunk('tests/getTest', async (testId, thunkAPI
     }
 });
 
-export const getResult = createAsyncThunk('tests/getResult', async (testId, thunkAPI) => {
+export const getResult = createAsyncThunk('tests/getResult', async (testId: string, thunkAPI) => {
     try {
         const response = await axios.get(`http://localhost/api/v1/tests/${testId}/result`, {
             headers: {

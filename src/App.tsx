@@ -7,6 +7,7 @@ import { getCourses } from './store/coursesSlice';
 import Skills from './Pages/Skiils/Skills';
 import Test from './Pages/Test/Test';
 import Skill from './Pages/Skill/Skill';
+import TestResult from './Pages/TestResult/TestResult';
 
 function App() {
     // @ts-expect-error исправить
@@ -27,6 +28,7 @@ function App() {
                     <Route index element={<Skills />} />
                     <Route path="skills/:id" element={<Skill />} />
                     <Route path="tests/:id" element={<Test />} />
+                    <Route path="/test/result" element={<TestResult />} />
                 </Route>
             </Routes>
         </BrowserRouter>
