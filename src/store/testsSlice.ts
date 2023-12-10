@@ -39,7 +39,7 @@ type TAnswer = {
     level_test:         number;
     correct_answers:    number;
     count_questions:    number;
-    percentage_correct: string;
+    percentage_correct: number;
 }
 
  type TRecommendations = {
